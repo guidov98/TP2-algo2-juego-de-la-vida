@@ -22,3 +22,4 @@ bool CreateGrayscaleColorTable( BMP& InputImage );
 bool Rescale( BMP& InputImage , char mode, int NewDimension );
 
 #endif
+
