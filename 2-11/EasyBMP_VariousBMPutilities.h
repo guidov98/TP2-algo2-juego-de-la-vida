@@ -1,6 +1,7 @@
 #ifndef _EasyBMP_VariousBMPutilities_h_
 #define _EasyBMP_VariousBMPutilities_h_
 
+
 BMFH GetBMFH( const char* szFileNameIn );
 BMIH GetBMIH( const char* szFileNameIn );
 void DisplayBitmapInfo( const char* szFileNameIn );
