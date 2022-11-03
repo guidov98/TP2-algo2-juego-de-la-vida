@@ -13,11 +13,12 @@ Tablero::Tablero(int n, int m, int l){
 	    for(int j = 0; j < m; j++){
 	        Lista<Celda *> * temp2 = new Lista<Celda*>;
 	        for(int k = 0; k < n; k++){
-	        	Celda * temp3 = new Celda;
+				Celda * temp3;
+				temp3 = new Celda(new Celula);
 				temp3->getCelula()->getGen1()->setCargaGentica((i*50));
 				temp3->getCelula()->getGen2()->setCargaGentica((j*50));
-				temp3->getCelula()->getGen3()->setCargaGentica((k*25));
-	        	temp2->add(temp3);
+				temp3->getCelula()->getGen3()->setCargaGentica((k*50));
+				temp2->add(temp3);
 	        }
 	        temp->add(temp2);
 	    }
@@ -45,11 +46,16 @@ int Tablero::imprimirTablero(){
 			temp2->reiniciarCursor();
 			while(temp2->avanzarCursor()){
 				Celda * temp3 = temp2->getCursor();
-				//cout << "\x1b[38;2;255;100;0m■\x1b[0m\n";
-				int color1 = (temp3->getCelula()->getGen1()->getCargaGentica());
-				int color2 = (temp3->getCelula()->getGen2()->getCargaGentica());
-				int color3 = (temp3->getCelula()->getGen3()->getCargaGentica());
-				std::cout << "\x1b[38;2;"<<color1<<";"<<color2<<";"<<color3<<"m█\x1b[0m";
+				if (temp3->getCelula()!=NULL){
+					int color1 = (temp3->getCelula()->getCargaGeneticaGen1());
+					int color2 = (temp3->getCelula()->getCargaGeneticaGen2());
+					int color3 = (temp3->getCelula()->getCargaGeneticaGen3());
+					std::cout << "\x1b[38;2;"<<color1<<";"<<color2<<";"<<color3<<"m█\x1b[0m";
+					std::cout << "\x1b[38;2;"<<color1<<";"<<color2<<";"<<color3<<"m█\x1b[0m";
+				}
+				else{
+					std::cout << "\x1b[47;2;0;0;0m/\x1b[0m";
+				}
 			}
 			std::cout << std::endl;
 	    }

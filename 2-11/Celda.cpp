@@ -2,7 +2,7 @@
 
 Celda::Celda(){
     comportamiento = Inerte;
-    celula = new Celula;
+    celula = NULL;
 }
 
 Celda::Celda(comportamientoCelda state){
