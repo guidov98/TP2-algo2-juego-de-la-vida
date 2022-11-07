@@ -1,0 +1,28 @@
+#ifndef TABLERO_H_
+#define TABLERO_H_
+
+#include "Celda.h"
+#include "Lista.h"
+
+class Tablero
+{
+private:
+	Lista<Lista<Lista<Celda*>*> *> * tablero;
+	int N;
+	int M;
+	int L;
+
+	void setVecinos();
+
+public:
+	Tablero(int n, int m, int l);
+	int getN();
+	int getM();
+	int getL();
+	Lista<Lista<Lista<Celda *> *> *> * getTablero();
+	int imprimirTablero();
+	int cantidadVecinos(Tablero tablero, int x, int y, int z);
+	~Tablero();
+};
+
+#endif /* TABLERO_H_ */
