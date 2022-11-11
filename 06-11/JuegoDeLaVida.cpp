@@ -3,7 +3,31 @@
 #include "Lista.h"
 using namespace std;
 
+JuegoDeLaVida::JuegoDeLaVida(){
+    this->tablero = new Tablero(int n, int m, int l);
+    this->graficos = new Visualizador();
+}
 
+JuegoDeLaVida::JuegoDeLaVida(){
+    delete this->tablero;
+    delete this->graficos;
+}
+
+void JuegoDeLaVida::iniciarConfiguracionUno(){
+}
+
+void JuegoDeLaVida::iniciarConfiguracionDos(){ 
+}
+
+void JuegoDeLaVida::iniciarConfiguracionTres(){   
+}
+
+void BatallaCampal::mostrarTablero(){
+
+    //Aca va un for
+        this->graficos->exportarImagen();
+
+}
 
 int main(){
 	/*Lista<int> list;
