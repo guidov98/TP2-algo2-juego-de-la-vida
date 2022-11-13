@@ -9,11 +9,17 @@
 
 enum comportamientoCelda{
 	Inerte,
-	Contaminada,
-	Envenenada,
-	Procreadora,
-	Portal,
-	Radioactiva
+	//Color: Blanca/Negra
+	Contaminada,	//No deja crecer una celula
+	//Color: Amarilla
+	Portal,			//Duplica el nacimiento de una celula en otra
+	//Color: Celeste
+	Radioactiva,	//Afecta a 1 o varios genes al heredarse
+	//Color: Verde
+	Envenenada,  	//Mata un Gen
+	//Color: Roja
+	Intercambiadora	//Intercambia Gen1 por Gen2, Gen2 por Gen3, Gen3 por Gen1
+	//Color: Violeta
 };
 
 enum tipoDeTransmicion{

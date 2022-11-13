@@ -13,7 +13,6 @@ void Tablero::setVecinosCelda(int x, int y, int z){
             vectorVecinos[i+1][j+1]=new Celda*[3];
             for (int k=-1; k<2; k++){
 				contador++;
-				///std::cout << "x:" << x << " y:" << y << " z:" << z << " i:" << i << " j:" << j << " k:" << k << " n:"  << contador << std::endl;
 				if (i==0 && j==0 && k==0){
 					vectorVecinos[i+1][j+1][k+1]=NULL;
 				}
@@ -37,7 +36,7 @@ void Tablero::setAllVecinos(){
 }
 
 Tablero::Tablero(int n, int m, int l, tipoDeTransmicion tipoTransmicion){
-	if (n<1 || m<1 || l<1) throw "Tablero imposible.";
+	if (n<3 || m<3 || l<3) throw "Tablero imposible.";
 	srand(time(NULL));
 	this->N=n;
 	this->M=m;
@@ -45,26 +44,23 @@ Tablero::Tablero(int n, int m, int l, tipoDeTransmicion tipoTransmicion){
 	this->tablero = new Lista<Lista<Lista<Celda*>*> *>;
 
 	for(int i = 0; i < l; i++){
+
 	    Lista<Lista<Celda *> *>* temp = new Lista<Lista<Celda*>*>;
+
 	    for(int j = 0; j < m; j++){
+
 	        Lista<Celda *> * temp2 = new Lista<Celda*>;
+
 	        for(int k = 0; k < n; k++){
-				int n = rand() % 2;
+
 				Celda * temp3;
-				if (n==1){
-					temp3 = new Celda(new Celula);
-					temp3->getCelula()->setGens(i*25+k*10,j*25+i*10,k*25+j*10);
-					temp3->setTransmicion(tipoTransmicion);
-				}
-				else{
-					temp3 = new Celda();
-				}
 				temp2->add(temp3);
 	        }
 	        temp->add(temp2);
 	    }
 	    tablero->add(temp);
 	}
+
 	this->setAllVecinos();
 }
 
@@ -127,7 +123,7 @@ int Tablero::imprimirTablero(){
 			while(temp2->avanzarCursor()){
 				Celda * temp3 = temp2->getCursor();
 				if (temp3->getCelula()!=NULL){
-					int color1 = (temp3->getCelula()->getCargaGeneticaGen1());
+					int color1 = (temp3->getCelula()->getCargaGeneticaGen1()) ;
 					int color2 = (temp3->getCelula()->getCargaGeneticaGen2());
 					int color3 = (temp3->getCelula()->getCargaGeneticaGen3());
 					std::cout << "\x1b[38;2;"<<color1<<";"<<color2<<";"<<color3<<"m█\x1b[0m";
@@ -146,6 +142,36 @@ int Tablero::imprimirTablero(){
 		z++;
 	}
 	return 0;
+}
+
+void Tablero::actualizarTablero(int x1, int x2, int x3){
+	this->tablero->reiniciarCursor();
+	while (this->tablero->avanzarCursor()){
+	    Lista<Lista<Celda *> *> * temp = this->tablero->getCursor();
+		temp->reiniciarCursor();
+	    while(temp->avanzarCursor()){
+	    	Lista<Celda *> * temp2 = temp->getCursor();
+			temp2->reiniciarCursor();
+			while(temp2->avanzarCursor()){
+
+				Celda * temp3 = temp2->getCursor();
+
+				int cantidadVecinos = temp3->contarVecinos();
+
+				if (temp3->getCelula()==NULL){
+					if (cantidadVecinos==x1){
+						temp3->generarCelula();
+					}
+				}
+				else{
+					if (!(cantidadVecinos>=x2 && cantidadVecinos<=x3)){
+						temp3->matarCelula();
+					}
+				}
+
+			}
+	    }
+	}
 }
 
 Tablero::~Tablero(){

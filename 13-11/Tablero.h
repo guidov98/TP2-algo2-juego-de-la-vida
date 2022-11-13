@@ -22,7 +22,7 @@ public:
 	Lista<Lista<Lista<Celda *> *> *> * getTablero();
 	Celda * getCeldaPos(int x, int y, int z);
 	int imprimirTablero();
-	int cantidadVecinos(Tablero tablero, int x, int y, int z);
+	void actualizarTablero(int x1, int x2, int x3);
 	~Tablero();
 };
 
