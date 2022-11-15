@@ -38,8 +38,8 @@ void visualizador::pintarComportamiento(int ALTO, int ANCHO, comportamientoCelda
             int alpha = 0;
             break;
         }
-	    for(int x = 0; x<640; x++){
-		    for(int y = 420; y<480; y++){
+	for(int x = 0; x<640; x++){
+	    for(int y = 420; y<480; y++){
 				
                 AnImage(x,y)->Red = 50;
                 AnImage(x,y)->Green = 50;
