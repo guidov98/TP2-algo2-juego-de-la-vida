@@ -80,14 +80,20 @@ void visualizador::pintarComportamiento(int ALTO, int ANCHO, comportamientoCelda
 void visualizador::dibujarCeldaVacia(int ALTO, int ANCHO){
     //unsigned int inicio_x = ((ALTO-1)*PIXELES_POR_CELDA);
     //unsigned int inicio_y = ((ANCHO-1)*PIXELES_POR_CELDA);
+	for(int x = inicio_x ; x < (inicio_x + PIXELES_POR_CELDA) ; x++){
+            for(int y = inicio_y ; y < (inicio_y + PIXELES_POR_CELDA) ; y++){
+                this->capa(x,y)->Red = rojo;
+                this->capa(x,y)->Green = verde;
+                this->capa(x,y)->Azul = blue;
+                this->capa(x,y)->Alpha = alpha;
 
-    for(int k=0; k<ALTO; k++){
-        int x = k;
-        int y=k;
+    //for(int k=0; k<ALTO; k++){
+        //int x = k;
+        //int y=k;
 
-        this->capa(k,k)->Red = 0;
-        this->capa(k,k)->Green = 0;
-        this->capa(k,k)->Azul = 0;
-        this->capa(k,k)->Alpha = 0;
+        //this->capa(k,k)->Red = 0;
+        //this->capa(k,k)->Green = 0;
+        //this->capa(k,k)->Azul = 0;
+        //this->capa(k,k)->Alpha = 0;
     }
 }
