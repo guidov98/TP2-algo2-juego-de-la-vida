@@ -77,7 +77,8 @@ void visualizador::pintarComportamiento(int ALTO, int ANCHO, comportamientoCelda
     }
 }
 
-void visualizador::dibujarCeldaVacia(int ALTO, int ANCHO){
+
+void visualizador::dibujarCeldaVacia(int ALTO, int ANCHO, ){
     //unsigned int inicio_x = ((ALTO-1)*PIXELES_POR_CELDA);
     //unsigned int inicio_y = ((ANCHO-1)*PIXELES_POR_CELDA);
 	for(int x = inicio_x ; x < (inicio_x + PIXELES_POR_CELDA) ; x++){
@@ -95,5 +96,29 @@ void visualizador::dibujarCeldaVacia(int ALTO, int ANCHO){
         //this->capa(k,k)->Green = 0;
         //this->capa(k,k)->Azul = 0;
         //this->capa(k,k)->Alpha = 0;
+    }
+}
+void visualizador::dibujarCelda(Tablero* tablero, unsigned int altura)
+{
+	Celda* celdaActual;
+
+    for(unsigned int L = 1; L <= tablero->getL(); L++)
+    {
+    	for(unsigned int M = 1; M <= tablero->getM(); M++)
+    	{
+    		celdaActual = tablero->getCeldaPos(M, L, altura);
+
+    		this->pintarComportamiento(M, L, celdaActual->getComportamiento());
+
+    		switch(celdaActual->getEstado())
+    		{
+    			case viva:
+    				this->dibujarCeldaVacia(M, L);
+    				break;
+    			case muerta:
+    				this->dibujarCeldaMuerta(M, L);
+					break;
+    		}
+    	}
     }
 }
