@@ -123,7 +123,8 @@ void visualizador::dibujarCeldaVacia(int ALTO, int ANCHO, ){
 	}
 }
 	
+void visualizador::pintarCelula(){
 	
 	
-	
+}
 	
