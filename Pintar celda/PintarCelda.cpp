@@ -101,26 +101,30 @@ void visualizador::dibujarCelda(Tablero* tablero, unsigned int altura)
     	}
     }
 }
-void visualizador::dibujarCeldaVacia(int ALTO, int ANCHO, ){
+void visualizador::dibujarCeldaVacia(//Definido en Constantes){
 	
-	for(int x = 290; x<350; x++){
-	    for(int y = 0; y<480; y++){
+unsigned int pixelesX = 640;
+unsigned int pixelesY = 480;
+unsigned int anchoBorde = 60;
+	
+    for(int x = (pixelesX/2) - (anchoBorde/2); x<(pixelesX/2) + (anchoBorde/2); x++){
+	    for(int y = 0; y < pixelesY; y++){
 				
-                AnImage(x,y)->Red = 255;
-                AnImage(x,y)->Green = 0;
-                AnImage(x,y)->Blue = 0;
-                AnImage(x,y)->Alpha = 0;
-		}
-	}
-	for(int x = 0; x<640; x++){
-	    for(int y = 210; y<270; y++){
+                this->capa(x,y)->Red = 255;
+                this->capa(x,y)->Green = 0;
+                this->capa(x,y)->Blue = 0;
+                this->capa(x,y)->Alpha = 0;
+		    }
+	    }
+	for(int x = 0; x < pixelesX; x++){
+	    for(int y = (pixelesY/2) - (anchoBorde/2); y<(pixelesY/2) + (anchoBorde/2); y++){
 				
-                AnImage(x,y)->Red = 255;
-                AnImage(x,y)->Green = 0;
-                AnImage(x,y)->Blue = 0;
-                AnImage(x,y)->Alpha = 0;
-		}
-	}
+                this->capa(x,y)->Red = 255;
+                this->capa(x,y)->Green = 0;
+                this->capa(x,y)->Blue = 0;
+                this->capa(x,y)->Alpha = 0;
+		    }
+	    }
 }
 	
 void visualizador::pintarCelula(){
