@@ -80,6 +80,7 @@ void visualizador::pintarComportamiento(int ALTO, int ANCHO, comportamientoCelda
 void visualizador::dibujarCelda(Tablero* tablero, unsigned int altura)
 {
 	Celda* celdaActual;
+	Celula* celulaActual;
 
     for(unsigned int L = 1; L <= tablero->getL(); L++)
     {
@@ -88,7 +89,7 @@ void visualizador::dibujarCelda(Tablero* tablero, unsigned int altura)
     		celdaActual = tablero->getCeldaPos(M, L, altura);
 
     		this->pintarComportamiento(M, L, celdaActual->getComportamiento());
-
+		this->pintarCelula(/*Coordenadas de la celula*/, celulaActual->getCargaGeneticaGen1(), celulaActual->getCargaGeneticaGen2(), celulaActual->getCargaGeneticaGen3()));
     		switch(celdaActual->getEstado())
     		{
     			case viva:
@@ -101,11 +102,11 @@ void visualizador::dibujarCelda(Tablero* tablero, unsigned int altura)
     	}
     }
 }
-void visualizador::dibujarCeldaVacia(//Definido en Constantes){
+void visualizador::dibujarCeldaVacia(//Definido en Constantes, ){
 	
-unsigned int pixelesX = 640;
-unsigned int pixelesY = 480;
-unsigned int anchoBorde = 60;
+	unsigned int pixelesX = 640;
+	unsigned int pixelesY = 480;
+	unsigned int anchoBorde = 60;
 	
     for(int x = (pixelesX/2) - (anchoBorde/2); x<(pixelesX/2) + (anchoBorde/2); x++){
 	    for(int y = 0; y < pixelesY; y++){
@@ -127,8 +128,19 @@ unsigned int anchoBorde = 60;
 	    }
 }
 	
-void visualizador::pintarCelula(){
+void visualizador::pintarCelula(/*Definido en Constantes*/, int cargaGenetica1, int cargaGenetica2, int cargaGenetica3){
 	
+	unsigned int pixelesX = 640;
+	unsigned int pixelesY = 480;
+	unsigned int anchoBorde = 60;
 	
+	    for(int x = anchoBorde; x<(pixelesX - anchoBorde); x++){
+	    	for(int y = anchoBorde; y < (pixelesY - anchoBorde); y++){
+				
+                this->capa(x,y)->Red = cargaGenetica1;
+                this->capa(x,y)->Green = cargaGenetica2;
+                this->capa(x,y)->Blue = cargaGenetica3;
+		   }
+	    }
 }
 	
