@@ -143,4 +143,4 @@ void visualizador::pintarCelula(/*Definido en Constantes*/, int cargaGenetica1, 
 		   }
 	    }
 }
-	
+//HACER ARCHIVO CONSTANTES	
