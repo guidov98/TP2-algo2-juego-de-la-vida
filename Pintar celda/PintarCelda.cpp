@@ -90,7 +90,7 @@ void visualizador::dibujarCelda(Tablero* tablero, unsigned int altura)
 
     		this->pintarComportamiento(M, L, celdaActual->getComportamiento());
 		this->pintarCelula(/*Coordenadas de la celula*/, celulaActual->getCargaGeneticaGen1(), celulaActual->getCargaGeneticaGen2(), celulaActual->getCargaGeneticaGen3()));
-    		switch(celdaActual->getEstado())
+    		switch(celulaActual->getEstado())
     		{
     			case viva:
     				this->dibujarCeldaVacia(M, L);
