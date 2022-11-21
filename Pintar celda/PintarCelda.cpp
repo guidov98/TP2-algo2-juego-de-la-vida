@@ -2,6 +2,10 @@
 #include "EasyBMP.h"
 
 void visualizador::pintarComportamiento(int ALTO, int ANCHO, comportamientoCelda comportamiento){
+	unsigned int pixelesX = 640;
+	unsigned int pixelesY = 480;
+	unsigned int anchoBorde = 60;
+	
     switch(comportamiento){
         case(envenenada){
             int rojo = 245;
@@ -38,40 +42,40 @@ void visualizador::pintarComportamiento(int ALTO, int ANCHO, comportamientoCelda
             int alpha = 0;
             break;
         }
-	for(int x = 0; x<640; x++){
-	    for(int y = 420; y<480; y++){
+	for(int x = 0; x<pixelesX; x++){
+	    for(int y = pixelesY - anchoBorde; y<pixelesY; y++){
 				
-                AnImage(x,y)->Red = 50;
-                AnImage(x,y)->Green = 50;
-                AnImage(x,y)->Blue = 192;
-                AnImage(x,y)->Alpha = 0;
+                this->capa(x,y)->Red = 50;
+                this->capa(x,y)->Green = 50;
+                this->capa(x,y)->Blue = 192;
+                this->capa(x,y)->Alpha = 0;
 		    }
 	    }
-        for(int x = 580; x<640; x++){
-            for(int y = 0; y<480; y++){
+        for(int x = pixelesX - anchoBorde; x<pixelesX; x++){
+            for(int y = 0; y<pixelesY; y++){
 
-                AnImage(x,y)->Red = 50;
-                AnImage(x,y)->Green = 50;
-                AnImage(x,y)->Blue = 192;
-                AnImage(x,y)->Alpha = 0;
+                this->capa(x,y)->Red = 50;
+                this->capa(x,y)->Green = 50;
+                this->capa(x,y)->Blue = 192;
+                this->capa(x,y)->Alpha = 0;
             }
         }
-        for(int x = 0; x<640; x++){
-            for(int y = 0; y<60; y++){
+        for(int x = 0; x<pixelesX; x++){
+            for(int y = 0; y<anchoBorde; y++){
 
-                AnImage(x,y)->Red = 50;
-                AnImage(x,y)->Green = 50;
-                AnImage(x,y)->Blue = 192;
-                AnImage(x,y)->Alpha = 0;
+                this->capa(x,y)->Red = 50;
+                this->capa(x,y)->Green = 50;
+                this->capa(x,y)->Blue = 192;
+                this->capa(x,y)->Alpha = 0;
             }
         }
-        for(int x = 0; x<60; x++){
-            for(int y = 0; y<480; y++){
+        for(int x = 0; x<anchoBorde; x++){
+            for(int y = 0; y<pixelesY; y++){
 
-                AnImage(x,y)->Red = 50;
-                AnImage(x,y)->Green = 50;
-                AnImage(x,y)->Blue = 192;
-                AnImage(x,y)->Alpha = 0;
+                this->capa(x,y)->Red = 50;
+                this->capa(x,y)->Green = 50;
+                this->capa(x,y)->Blue = 192;
+                this->capa(x,y)->Alpha = 0;
             }
         }
     }
