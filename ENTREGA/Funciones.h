@@ -15,10 +15,17 @@ enum Decision{
 
 class Funciones{
 	public:
+
+/*	Pre:-
+	Post: Imprime dos lineas vacias para separar el texto
+*/
 	static void espaciado(){
 		std::cout << std::endl << std::endl;
 	}
 
+/*	Pre:-
+	Post: Imprime Un mensaje de bienvenida con la informacion del TP
+*/
 	static void bienvenida(){
 		std::cout << "╔══════════════════════╗" << std::endl;
 		std::cout << "║ JUEGO DE LA VIDA 2.0 ║" << std::endl;
@@ -36,12 +43,18 @@ class Funciones{
 		std::cout << "╚═════════════════════════════════════════╝" << std::endl;
 	}
 
+/*	Pre:-
+	Post: Imprime un mensaje de despedida para el usuario
+*/
 	static void despedida(){
 		std::cout << "╔════════════════════╗" << std::endl;
 		std::cout << "║ GRACIAS POR JUGAR! ║" << std::endl;
 		std::cout << "╚════════════════════╝" << std::endl;
 	}
 
+/*	Pre:-
+	Post: Devuelve "Congelado" si estaCongelado es verdadero y "Activo" de lo contrario
+*/
 	static std::string textoCongelado(bool estaCongelado){
 		if (estaCongelado){
 			return "Congelado";
@@ -49,6 +62,9 @@ class Funciones{
 		return "Activo";
 	}
 
+/*	Pre: -
+	Post: Imprime la informacion de la partida en curso
+*/
 	static void mostrarInformacion(int turno, int celulasNacidas, int celulasFallecidas, float promedioNacimientos, float promedioMuertes, bool estaCongelado){
 		std::cout << "╔═══════════════════════════════════════≡" << std::endl;
 		std::cout << "║ Turno:                      " << turno << std::endl;
@@ -60,6 +76,10 @@ class Funciones{
 		std::cout << "╚═══════════════════════════════════════≡" << std::endl;
 	}
 
+/*	Pre:-
+	Post: 	Pide al usuario un dato y si es mayor a minimo devuelve ese valor.
+			Si el valor ingresado es menor a minimo, se lo informa el usuario y le pide de vuelta.
+*/
 	static int pedirInput(int minimo){
 		int output = 0;
 		std::cin >> output;
@@ -70,6 +90,11 @@ class Funciones{
 		}
 		return output;
 	}
+
+/*	Pre:    minimo debe ser menor que maximo
+	Post: 	Pide al usuario un dato y si es mayor a minimo y menor a maximo devuelve ese valor.
+			Si el valor ingresado es menor a minimo o mayor a maximo, se lo informa el usuario y le pide de vuelta.
+*/
 	static int pedirInput(int minimo, int maximo){
 		int output = 0;
 		std::cin >> output;
@@ -81,6 +106,9 @@ class Funciones{
 		return output;
 	}
 
+/* 	Pre: -
+	Post: Le pide una decision al usuario y devuelve la Decision indicada.
+*/
 	static Decision pedirDecision(bool conTurno){
 		int respuesta;
 		std::cout << "Que desea hacer?" << std::endl;
@@ -102,6 +130,9 @@ class Funciones{
 		return (Decision)(respuesta-1);
 	}
 
+/* 	Pre: -
+	Post: Le pide una cantidad de turnos al usuario y devuelve la cantidad indicada.
+*/
 	static int preguntarCantidadDeTurnos(){
 		int cantidadDeTurnos;
 		std::cout<< "Ingrese la cantidad de turnos que quiere ejecutar: ";
@@ -110,6 +141,9 @@ class Funciones{
 		return cantidadDeTurnos;
 	}
 
+/* 	Pre: -
+	Post: Le pregunta al usuario que configuracion que usar y devuelve el nnumero de la configuracion indicada.
+*/
 	static int elegirConfiguracion(){
 		std::cout << "Quiere elegir una configuracion o prefiere elegir manualmente las celulas?" << std::endl;
 		std::cout << "1- Configuracion 1" << std::endl;
@@ -119,6 +153,9 @@ class Funciones{
 		return (pedirInput(1,4)-1);
 	}
 
+/* 	Pre: -
+	Post: Elimina los archivos .bmp ya existentes de la carpeta actual.
+*/
 	static void eliminarArchivos(){
 		for (int i=0; i<50; i++){
 			std::stringstream alturaStr;
