@@ -81,7 +81,7 @@ int * Celda::getNewGenes(){
     if((this->getCelula())!=NULL){
         throw "Ya hay una celula, no se puede volver a generar una.";
     }
-    int * genes;
+    int * genes = NULL;
     switch(this->transmicion){
         case InvertirProgenitores:
             genes = this->getPromediosInvertidosVecinos();
@@ -105,15 +105,17 @@ Celda**** Celda::getVecinos(){
 
 
 
-void Celda::setCelula(Celula * cell){
+int Celda::setCelula(Celula * cell){
+    if (this->comportamiento == Contaminada){
+        return -1;
+    }
     if (cell==NULL){
         this->celula = cell;
-        return;
+        return 1;
     }
-    if (this->comportamiento == Contaminada){
-        return;
+    else{
+        return -1;
     }
-    this->celula = cell;
 }
 
 
@@ -144,6 +146,13 @@ void Celda::setComportamientoRandom(){
 }
 
 void Celda::setVecinos(Celda **** vectorVecinos){
+    for (int i=0; i<3; i++){
+        for (int j=0; j<3; j++){
+            delete[] (this->vecinos)[i][j];
+        }
+        delete[] (this->vecinos)[i];
+    }
+    delete[] (this->vecinos);
     this->vecinos = vectorVecinos;
 }
 
@@ -160,7 +169,10 @@ void Celda::nacerCelula(int gen1, int gen2, int gen3){
         throw "Ya hay celula viva.";
     }
     Celula * aux = new Celula(gen1,gen2,gen3);
-    this->setCelula(aux);
+    int seLogro = this->setCelula(aux);
+    if (seLogro==-1){
+        delete aux;
+    }
 }
 
 

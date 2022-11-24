@@ -99,9 +99,9 @@ void JuegoDeLaVida::iniciarConfiguracionManual(){
 	l = Funciones::pedirInput(3,50);
 
 	std::cout << "Que tipo de transmicion quiere?" << std::endl;
-	std::cout << "1- Promedios" << std::endl;
-	std::cout << "2- Promedios Cuadraticos" << std::endl;
-	std::cout << "3- Minimos" << std::endl;
+	std::cout << "1- Promedio Invertido" << std::endl;
+	std::cout << "2- Promedio Cuadratico" << std::endl;
+	std::cout << "3- Gen Minimo" << std::endl;
 	tipoTransmicion = (tipoDeTransmicion)Funciones::pedirInput(1,3);
 	std::cout << std::endl << std::endl;
 
@@ -238,4 +238,3 @@ void JuegoDeLaVida::ejecutarTurno(){
 	bool estaCongelado = (celulasNacidas==0 && celulasFallecidas==0);
 	Funciones::mostrarInformacion(this->turnoActual, celulasNacidas, celulasFallecidas, promedioNacimientos, promedioMuertes, estaCongelado);
 }
-

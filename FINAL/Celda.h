@@ -80,7 +80,7 @@ public:
 
 /*	Pre: -
 	Post: Setea la celula de la celda igual a cell */
-	void setCelula(Celula * cell);
+	int setCelula(Celula * cell);
 
 /*	Pre: -
 	Post: Setea el tipoDeTransmicion de la celda igual a tipoTransmicion */

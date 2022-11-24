@@ -220,7 +220,10 @@ void Tablero::agregarCelulaRandom(int gen1, int gen2, int gen3){
 		z = rand() % this->L;
 	}while(this->getCeldaPos(x,y,z)->hayCelulaViva());
 	Celula * aux = new Celula(gen1, gen2, gen3);
-	this->getCeldaPos(x,y,z)->setCelula(aux);
+	int seAgrego = this->getCeldaPos(x,y,z)->setCelula(aux);
+	if (seAgrego==-1){
+		delete aux;
+	}
 }
 
 int Tablero::duplicarCelulas(Lista<Celula*> * celulasOrigen, int celulasPortales){
@@ -286,6 +289,8 @@ int Tablero::actualizarTablero(int x1, int x2, int x3){
 	int celulasNacidasDePortales 	= duplicarCelulas(auxPortales, cantidadPortales);
 	this->cantidadCelulas 		   += celulasNacidasDePortales;
 	cantidadNacidas 			   += celulasNacidasDePortales;
+	delete auxPortales;
+	delete aux;
 	return cantidadNacidas;
 }
 
